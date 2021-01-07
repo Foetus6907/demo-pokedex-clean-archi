@@ -14,10 +14,8 @@
 
 <script lang="ts">
 import {defineComponent, computed} from "vue";
-import {PokemonBuilder} from "@/core/pokemon/usecases/pokemon.builder";
 import { Pokemon } from '@/core/pokemon/domain/entities/Pokemon';
-import {PokemonHandler} from "@/core/pokemon/usecases/pokemon.handler";
-import {InMemoryPokemonLoader} from "@/core/pokemon/adapter/secondaries/InMemoryPokemon.loader";
+import {pokemonHandler} from "@/vue/views/pokemon.module";
 
 
 export default defineComponent({
@@ -29,24 +27,8 @@ export default defineComponent({
     }
   },
   setup: (props) => {
-
-    const pika: Pokemon = new PokemonBuilder()
-        .withName("pika")
-        .withNumber("1")
-        .withDescription("pokemon souri")
-        .withAvatar("http://via.placeholder.com/475px475")
-        .build();
-
-    const salameche: Pokemon = new PokemonBuilder()
-        .withName("salameche")
-        .withNumber("2")
-        .withDescription("pokemon flamme")
-        .withAvatar("http://via.placeholder.com/475px475")
-        .build();
-
-    const pokemon =  new PokemonHandler(new InMemoryPokemonLoader([pika, salameche])).get(props.pokemonId)
     let pokemonToDisplay: Pokemon;
-    pokemon.subscribe(pokemon => pokemonToDisplay = pokemon)
+    pokemonHandler.get(props.pokemonId).subscribe(pokemon => pokemonToDisplay = pokemon)
 
     return {
       pokemon: computed(() => pokemonToDisplay),
