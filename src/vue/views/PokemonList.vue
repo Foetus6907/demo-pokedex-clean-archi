@@ -3,9 +3,7 @@
     <h1>List</h1>
 
     <div class="card-deck d-flex justify-content-center">
-      <template :key="key" v-for="(pokemon,key) in pokemonList">
-        <Cardlist class="m-2" :pokemon="pokemon"></Cardlist>
-      </template>
+      <Cardlist :key="key" v-for="(pokemon,key) in pokemonList" class="m-2" v-bind:pokemon="pokemon"></Cardlist>
     </div>
   </div>
 </template>

@@ -1,5 +1,4 @@
 <template>
-
   <div class="card" v-if="pokemon">
     <img class="card-img-top pokemonCardImage" :src="pokemon.avatar" alt="Card image cap">
     <div class="card-body">
