@@ -17,4 +17,11 @@ const salameche: Pokemon = new PokemonBuilder()
 	.withAvatar("http://via.placeholder.com/475px475")
 	.build();
 
-export const pokemonHandler: PokemonHandler = new PokemonHandler(new InMemoryPokemonLoader([pika, salameche]))
+const mew: Pokemon = new PokemonBuilder()
+	.withName("mew")
+	.withNumber("151")
+	.withDescription("pokemon fabuleu")
+	.withAvatar("http://via.placeholder.com/475px475")
+	.build();
+
+export const pokemonHandler: PokemonHandler = new PokemonHandler(new InMemoryPokemonLoader([pika, salameche, mew]))
