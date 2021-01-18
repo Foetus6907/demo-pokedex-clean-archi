@@ -16,24 +16,33 @@
 import {defineComponent, computed} from "vue";
 import { Pokemon } from '@/core/pokemon/domain/entities/Pokemon';
 import {pokemonHandler} from "@/vue/views/pokemon.module";
+import {Subscription} from "rxjs";
 
 
 export default defineComponent({
   name: 'Navbar',
   props: {
-    pokemonId: {
+    pokemonName: {
       type: String,
       required: true
     }
   },
-  setup: (props) => {
-    let pokemonToDisplay: Pokemon;
-    pokemonHandler.get(props.pokemonId).subscribe(pokemon => pokemonToDisplay = pokemon)
-
+  data() {
     return {
-      pokemon: computed(() => pokemonToDisplay),
+      pokemon: undefined as unknown as Pokemon,
+      pokemonsSubcription: new Subscription()
     }
   },
+  created() {
+    this.pokemonsSubcription = pokemonHandler.getPokemonByName(this.pokemonName).subscribe(pokemon => {
+      if (pokemon) {
+        this.pokemon = pokemon
+      }
+    })
+  },
+  beforeUnmount() {
+    this.pokemonsSubcription.unsubscribe()
+  }
 });
 
 

@@ -14,6 +14,9 @@ export class PokemonHandler {
 	get(number: string): Observable<Pokemon> {
 		return this.pokemonSource.get(number)
 	}
-		
 
+
+	getPokemonByName(name: string) {
+		return this.pokemonSource.getPokemonByName(name)
+	}
 }

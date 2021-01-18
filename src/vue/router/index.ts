@@ -7,7 +7,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "about" */ '../views/PokemonList.vue')
   },
   {
-    path: '/pokemon/:pokemonId',
+    path: '/pokemon/:pokemonName',
     name: 'pokemondetail',
     component: () => import(/* webpackChunkName: "about" */ '../views/PokemonDetails.vue'),
     props: true

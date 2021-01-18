@@ -21,4 +21,11 @@ export class InMemoryPokemonLoader implements PokemonLoader {
 				map(pokemons => pokemons.filter(pokemon => pokemon.number === number)[0])
 			);
 	}
+
+	getPokemonByName(name: string): Observable<Pokemon> {
+		return this.pokemons$
+			.pipe(
+				map(pokemons => pokemons.filter(pokemon => pokemon.name === name)[0])
+			);;
+	}
 }

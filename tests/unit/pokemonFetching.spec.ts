@@ -1,6 +1,6 @@
 import {PokemonHandler} from "@/core/pokemon/usecases/pokemon.handler";
 import {PokemonLoader} from "@/core/pokemon/domain/loader/PokemonLoader";
-import {InMemoryPokemonLoader} from "@/core/pokemon/adapter/secondaries/InMemoryPokemon.loader";
+import {InMemoryPokemonLoader} from "@/core/pokemon/adapter/secondaries/InMemory/InMemoryPokemon.loader";
 import {Pokemon} from "@/core/pokemon/domain/entities/Pokemon";
 import {StubPokemonBuilder} from "./stubs/stubPokemon.builder";
 
@@ -45,9 +45,13 @@ describe('Pokemon Handler fetches', () => {
 	})
 
 	it('A detail of one pokemon', done => {
-		const salameche: Pokemon = new StubPokemonBuilder().withNumber("salameche").withNumber("2").build()
+		const salameche: Pokemon = new StubPokemonBuilder().withName("salameche").withNumber("2").build()
 		const pokemonHandler: PokemonHandler = createPokemonHandler([pikachu, salameche])
 		pokemonHandler.get("2").subscribe(pokemon => {
+			verifyOnePokemon(pokemon, salameche);
+			done()
+		})
+		pokemonHandler.getPokemonByName("salameche").subscribe(pokemon => {
 			verifyOnePokemon(pokemon, salameche);
 			done()
 		})

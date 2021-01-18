@@ -1,35 +1,35 @@
 export class Pokemon {
 	constructor(
-		private _number: String,
-		private _name: String,
-		private _description: String,
-		private _weight: Number,
-		private _height: Number,
-		private _avatar: String,
+		private _number: string,
+		private _name: string,
+		private _description: string,
+		private _weight: number,
+		private _height: number,
+		private _avatar: string,
 		) {
 	}
 
-	get number(): String {
+	get number(): string {
 		return this._number;
 	}
 
-	get name(): String {
+	get name(): string {
 		return this._name;
 	}
 
-	get description(): String {
+	get description(): string {
 		return this._description;
 	}
 
-	get weight(): Number {
+	get weight(): number {
 		return this._weight;
 	}
 
-	get height(): Number {
+	get height(): number {
 		return this._height;
 	}
 
-	get avatar(): String {
+	get avatar(): string {
 		return this._avatar;
 	}
 }
