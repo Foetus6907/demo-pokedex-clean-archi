@@ -5,6 +5,8 @@ import {PokemonDTO, PokemonPageDTO} from "@/core/pokemon/adapter/secondaries/Res
 import {from} from "rxjs";
 import axios from "axios";
 import {PokemonMappers} from "@/core/pokemon/adapter/secondaries/RestPokeApi/mappers/pokemon.mappers";
+import {PokemonSpeciesDTO} from "@/core/pokemon/adapter/secondaries/RestPokeApi/DTO/PokemonSpeciesDTO";
+import {PokemonFlavor} from "@/core/pokemon/domain/entities/PokemonFlavor";
 
 
 export class RESTPokemonLoader implements PokemonLoader {
@@ -42,6 +44,15 @@ export class RESTPokemonLoader implements PokemonLoader {
 				return PokemonMappers.mapToPokemon(pokemonDTO);
 			})
 		return from(pokemon)
+	}
+
+	getPokemonFlavorByName(name: string): Observable<PokemonFlavor> {
+		const pokemonFlavor = axios.get(`https://pokeapi.co/api/v2/pokemon-species/${name}`)
+			.then((response) => {
+				const pokemonSpeciesDTO = response.data as unknown as PokemonSpeciesDTO
+				return PokemonMappers.mapToPokemonFlavor(pokemonSpeciesDTO);
+			})
+		return from(pokemonFlavor);
 	}
 
 }

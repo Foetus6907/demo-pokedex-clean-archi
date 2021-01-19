@@ -5,11 +5,15 @@ import {
 } from "@/core/pokemon/adapter/secondaries/RestPokeApi/DTO/PokemonDTO";
 import {Pokemon} from "@/core/pokemon/domain/entities/Pokemon";
 import {PokemonBuilder} from "@/core/pokemon/usecases/pokemon.builder";
+import {
+	PokemonFlavorDTO,
+	PokemonSpeciesDTO
+} from "@/core/pokemon/adapter/secondaries/RestPokeApi/DTO/PokemonSpeciesDTO";
+import {PokemonFlavor} from "@/core/pokemon/domain/entities/PokemonFlavor";
+import {PokemonFlavorBuilder} from "@/core/pokemon/usecases/pokemonFlavor.builder";
 
 export class PokemonMappers {
 	static mapToPokemon(pokemonDTO: PokemonDTO): Pokemon {
-		console.log(pokemonDTO)
-
 		return new PokemonBuilder()
 			.withNumber(pokemonDTO.id.toString())
 			.withName(pokemonDTO.name)
@@ -28,5 +32,16 @@ export class PokemonMappers {
 				.withNumber((index + 1).toString())
 				.build()
 		})
+	}
+
+	static mapToPokemonFlavor(pokemonSpeciesDTO: PokemonSpeciesDTO): PokemonFlavor {
+
+		const pokemonFlavorDTO: PokemonFlavorDTO = pokemonSpeciesDTO.flavor_text_entries[0];
+
+		return new PokemonFlavorBuilder()
+			.withFlavorText(pokemonFlavorDTO.flavor_text)
+			.withLanguage(pokemonFlavorDTO.language.name)
+			.withVersion(pokemonFlavorDTO.version.name)
+			.build();
 	}
 }

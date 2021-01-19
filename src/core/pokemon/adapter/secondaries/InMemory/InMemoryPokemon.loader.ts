@@ -2,6 +2,8 @@ import {PokemonLoader} from "@/core/pokemon/domain/loader/PokemonLoader";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {Pokemon} from "@/core/pokemon/domain/entities/Pokemon";
 import {map} from "rxjs/operators";
+import {PokemonFlavor} from "@/core/pokemon/domain/entities/PokemonFlavor";
+import {PokemonFlavorBuilder} from "@/core/pokemon/usecases/pokemonFlavor.builder";
 
 export class InMemoryPokemonLoader implements PokemonLoader {
 
@@ -26,6 +28,16 @@ export class InMemoryPokemonLoader implements PokemonLoader {
 		return this.pokemons$
 			.pipe(
 				map(pokemons => pokemons.filter(pokemon => pokemon.name === name)[0])
-			);;
+			);
+	}
+
+	getPokemonFlavorByName(name: string): Observable<PokemonFlavor> {
+
+		return new BehaviorSubject(new PokemonFlavorBuilder()
+										.withFlavorText("Ceci sera la description du pokemon")
+										.withLanguage("fr")
+										.withVersion("red")
+										.build())
+
 	}
 }

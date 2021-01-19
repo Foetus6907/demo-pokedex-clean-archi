@@ -2,21 +2,23 @@
   <h1>Detail</h1>
   <div class="container-fluid d-flex justify-content-center">
     <div class="card" v-if="this.pokemon">
+      <router-link tag="a" class="btn btn-secondary" to="/">Go Back</router-link>
       <img :src="this.pokemon.avatar" class="card-img-top pokemonCardImage" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{ this.pokemon.name }}</h5>
-        <p class="card-text">{{ this.pokemon.description }}</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h6 class="card-title">Version : {{ this.pokemonFlavor.version }}</h6>
+        <p class="card-text">{{ this.pokemonFlavor.flavorText }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent, computed} from "vue";
+import {defineComponent} from "vue";
 import { Pokemon } from '@/core/pokemon/domain/entities/Pokemon';
 import {pokemonHandler} from "@/vue/views/pokemon.module";
 import {Subscription} from "rxjs";
+import {PokemonFlavor} from "@/core/pokemon/domain/entities/PokemonFlavor";
 
 
 export default defineComponent({
@@ -30,18 +32,28 @@ export default defineComponent({
   data() {
     return {
       pokemon: undefined as unknown as Pokemon,
-      pokemonsSubcription: new Subscription()
+      pokemonSubscription: new Subscription(),
+      pokemonFlavor: undefined as unknown as PokemonFlavor,
+      pokemonFlavorSubscription: new Subscription(),
     }
   },
   created() {
-    this.pokemonsSubcription = pokemonHandler.getPokemonByName(this.pokemonName).subscribe(pokemon => {
+    this.pokemonSubscription = pokemonHandler.getPokemonByName(this.pokemonName).subscribe((pokemon: Pokemon) => {
       if (pokemon) {
-        this.pokemon = pokemon
+        this.pokemon = pokemon;
       }
     })
+
+    this.pokemonFlavorSubscription = pokemonHandler.getPokemonFlavorByName(this.pokemonName).subscribe((pokemonFlavor: PokemonFlavor) => {
+      if (pokemonFlavor) {
+        this.pokemonFlavor = pokemonFlavor;
+      }
+    })
+
   },
   beforeUnmount() {
-    this.pokemonsSubcription.unsubscribe()
+    this.pokemonSubscription.unsubscribe()
+    this.pokemonFlavorSubscription.unsubscribe();
   }
 });
 

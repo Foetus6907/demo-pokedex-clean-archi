@@ -7,4 +7,6 @@ export interface PokemonLoader {
 	get(number: string): Observable<Pokemon>;
 
 	getPokemonByName(name: string): Observable<Pokemon>;
+
+	getPokemonFlavorByName(name: string): any;
 }

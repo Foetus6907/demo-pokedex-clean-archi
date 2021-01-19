@@ -19,4 +19,8 @@ export class PokemonHandler {
 	getPokemonByName(name: string) {
 		return this.pokemonSource.getPokemonByName(name)
 	}
+
+	getPokemonFlavorByName(name: string) {
+		return this.pokemonSource.getPokemonFlavorByName(name);
+	}
 }
