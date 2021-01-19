@@ -1,6 +1,7 @@
 import {Observable} from "rxjs";
 import {PokemonLoader} from "@/core/pokemon/domain/loader/PokemonLoader";
 import {Pokemon} from "@/core/pokemon/domain/entities/Pokemon";
+import {PokemonFlavor} from "@/core/pokemon/domain/entities/PokemonFlavor";
 
 export class PokemonHandler {
 	constructor(private pokemonSource: PokemonLoader) {
@@ -16,11 +17,11 @@ export class PokemonHandler {
 	}
 
 
-	getPokemonByName(name: string) {
+	getPokemonByName(name: string): Observable<Pokemon> {
 		return this.pokemonSource.getPokemonByName(name)
 	}
 
-	getPokemonFlavorByName(name: string) {
+	getPokemonFlavorByName(name: string): Observable<PokemonFlavor> {
 		return this.pokemonSource.getPokemonFlavorByName(name);
 	}
 }

@@ -3,14 +3,20 @@
     "target": "esnext",
     "module": "esnext",
     "strict": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "importHelpers": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
+    "downlevelIteration": true,
+    "resolveJsonModule": true,
     "baseUrl": ".",
+    "noEmit": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "types": [
       "webpack-env",
       "jest"
@@ -18,7 +24,8 @@
     "paths": {
       "@/*": [
         "src/*"
-      ]
+      ],
+      "@": ["src"]
     },
     "lib": [
       "esnext",

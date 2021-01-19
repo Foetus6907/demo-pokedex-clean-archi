@@ -1,9 +1,15 @@
 import {PokemonFlavor} from "@/core/pokemon/domain/entities/PokemonFlavor";
 
 export class PokemonFlavorBuilder {
-	protected _flavor_text = "";
-	protected _language = "";
-	protected _version = "";
+	protected _flavor_text:string;
+	protected _language: string;
+	protected _version: string;
+
+	constructor() {
+		this._flavor_text = "";
+		this._language = "";
+		this._version = "";
+	}
 
 	withFlavorText(flavorText: string) {
 		this._flavor_text = flavorText;

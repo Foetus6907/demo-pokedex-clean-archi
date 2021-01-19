@@ -8,15 +8,15 @@ export class PokemonDIFactory {
 	static pokemonLoader(): PokemonLoader {
 		const pika: Pokemon = new PokemonBuilder()
 			.withName("pika")
-			.withNumber("1")
+			.withNumber("25")
 			.withDescription("pokemon souri")
-			.withAvatar("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png")
+			.withAvatar("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png")
 			.build();
 		const salameche: Pokemon = new PokemonBuilder()
 			.withName("salameche")
-			.withNumber("2")
+			.withNumber("4")
 			.withDescription("pokemon flamme")
-			.withAvatar("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png")
+			.withAvatar("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png")
 			.build();
 		const mew: Pokemon = new PokemonBuilder()
 			.withName("mew")
@@ -24,7 +24,10 @@ export class PokemonDIFactory {
 			.withDescription("pokemon fabuleu")
 			.withAvatar("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png")
 			.build();
-		switch (process.env.VUE_APP_SOURCE) {
+
+		console.log("env Variable", process.env.REACT_APP_SOURCE)
+
+		switch (process.env.VUE_APP_SOURCE || process.env.REACT_APP_SOURCE) {
 			case "rest":
 				return new RESTPokemonLoader();
 			default:
