@@ -1,12 +1,21 @@
 import {Pokemon} from "@/core/pokemon/domain/entities/Pokemon";
 
 export class PokemonBuilder {
-	protected _number = ""
-	protected _name = ""
-	protected _description = ""
-	protected _weight = 0
-	protected _height = 0
-	protected _avatar = ""
+	protected _number: string
+	protected _name: string
+	protected _description: string
+	protected _weight: number
+	protected _height:number
+	protected _avatar: string
+
+	constructor() {
+		this._number = "";
+		this._name = "";
+		this._description = "";
+		this._weight = 0;
+		this._height = 0;
+		this._avatar = "";
+	}
 
 	withNumber(value: string): PokemonBuilder {
 		this._number = value;
