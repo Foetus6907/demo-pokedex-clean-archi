@@ -1,53 +1,53 @@
 import {Pokemon} from "@/core/pokemon/domain/entities/Pokemon";
 
 export class PokemonBuilder {
-	protected _number: string
-	protected _name: string
-	protected _description: string
-	protected _weight: number
-	protected _height:number
-	protected _avatar: string
+	protected Number: string
+	protected Name: string
+	protected Description: string
+	protected Weight: number
+	protected Height: number
+	protected Avatar: string
 
 	constructor() {
-		this._number = "";
-		this._name = "";
-		this._description = "";
-		this._weight = 0;
-		this._height = 0;
-		this._avatar = "";
+		this.Number = "";
+		this.Name = "";
+		this.Description = "";
+		this.Weight = 0;
+		this.Height = 0;
+		this.Avatar = "";
 	}
 
 	withNumber(value: string): PokemonBuilder {
-		this._number = value;
+		this.Number = value;
 		return this
 	}
 
 	withName(value: string): PokemonBuilder {
-		this._name = value;
+		this.Name = value;
 		return this
 	}
 
 	withDescription(value: string): PokemonBuilder {
-		this._description = value;
+		this.Description = value;
 		return this
 	}
 
 	withHeight(value: number): PokemonBuilder {
-		this._weight = value;
+		this.Weight = value;
 		return this
 	}
 
 	withWeight(value: number): PokemonBuilder {
-		this._height = value;
+		this.Height = value;
 		return this
 	}
 
 	withAvatar(value: string): PokemonBuilder {
-		this._avatar = value;
+		this.Avatar = value;
 		return this
 	}
 
 	build(): Pokemon {
-		return new Pokemon(this._number, this._name, this._description, this._weight, this._height, this._avatar);
+		return new Pokemon(this.Number, this.Name, this.Description, this.Weight, this.Height, this.Avatar);
 	}
 }

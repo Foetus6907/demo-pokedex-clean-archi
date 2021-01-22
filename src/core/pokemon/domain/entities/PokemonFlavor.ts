@@ -1,20 +1,20 @@
 export class PokemonFlavor {
 	constructor(
-		private _flavor_text: string,
-		private _language: string,
-		private _version: string,
+		private FlavorText: string,
+		private Language: string,
+		private Version: string,
 	) {
 	}
 
 	get flavorText(): string {
-		return this._flavor_text;
+		return this.FlavorText;
 	}
 
 	get languages(): string {
-		return this._language;
+		return this.Language;
 	}
 
 	get version(): string {
-		return this._version;
+		return this.Version;
 	}
 }

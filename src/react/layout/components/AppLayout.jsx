@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from "react";
 import AppMenu from "../components/AppMenu";
-import AppContent from "../components/AppContent";
+import AppContent from "./AppContent";
 
 class AppLayout extends Component {
 	render() {

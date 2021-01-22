@@ -25,8 +25,6 @@ export class PokemonDIFactory {
 			.withAvatar("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png")
 			.build();
 
-		console.log("env Variable", process.env.REACT_APP_SOURCE)
-
 		switch (process.env.VUE_APP_SOURCE || process.env.REACT_APP_SOURCE) {
 			case "rest":
 				return new RESTPokemonLoader();

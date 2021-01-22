@@ -16,7 +16,7 @@
 import { defineComponent} from 'vue';
 import Cardlist from "@/vue/components/Cardlist.vue";
 import { Pokemon } from '@/core/pokemon/domain/entities/Pokemon';
-import {pokemonHandler} from "@/vue/views/pokemon.module";
+import {pokemonHandler} from "@/core/pokemon/adapter/primary/pokemon.module";
 import {Subscription} from "rxjs";
 
 

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import {Link, match, withRouter} from 'react-router-dom';
+import {Link, match} from 'react-router-dom';
 import {Button, Card} from "react-bootstrap";
 import {Pokemon} from "@/core/pokemon/domain/entities/Pokemon";
 import {pokemonHandler} from "@/core/pokemon/adapter/primary/pokemon.module";
@@ -17,7 +17,7 @@ interface PokemonDetailState {
 }
 
 class PokemonDetail extends Component<PokemonDetailInterfaceProps, PokemonDetailState> {
-	constructor(props:PokemonDetailInterfaceProps) {
+	constructor(props: PokemonDetailInterfaceProps) {
 		super(props);
 		this.state = {
 			pokemon: undefined,

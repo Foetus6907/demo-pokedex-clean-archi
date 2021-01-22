@@ -1,5 +1,4 @@
 import React, {Fragment} from "react";
-import {CardDeck} from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import {Pokemon} from "@/core/pokemon/domain/entities/Pokemon";

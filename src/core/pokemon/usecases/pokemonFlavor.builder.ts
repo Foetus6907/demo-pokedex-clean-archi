@@ -1,32 +1,32 @@
 import {PokemonFlavor} from "@/core/pokemon/domain/entities/PokemonFlavor";
 
 export class PokemonFlavorBuilder {
-	protected _flavor_text:string;
-	protected _language: string;
-	protected _version: string;
+	protected FlavorText: string;
+	protected Language: string;
+	protected Version: string;
 
 	constructor() {
-		this._flavor_text = "";
-		this._language = "";
-		this._version = "";
+		this.FlavorText = "";
+		this.Language = "";
+		this.Version = "";
 	}
 
 	withFlavorText(flavorText: string) {
-		this._flavor_text = flavorText;
+		this.FlavorText = flavorText;
 		return this;
 	}
 
 	withLanguage(language: string) {
-		this._language = language;
+		this.Language = language;
 		return this;
 	}
 
 	withVersion(version: string) {
-		this._version = version;
+		this.Version = version;
 		return this;
 	}
 
 	build() {
-		return new PokemonFlavor(this._flavor_text, this._language, this._version);
+		return new PokemonFlavor(this.FlavorText, this.Language, this.Version);
 	}
 }
