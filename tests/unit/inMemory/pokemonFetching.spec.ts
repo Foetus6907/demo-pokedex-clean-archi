@@ -2,7 +2,7 @@ import {PokemonHandler} from "@/core/pokemon/usecases/pokemon.handler";
 import {PokemonLoader} from "@/core/pokemon/domain/loader/PokemonLoader";
 import {InMemoryPokemonLoader} from "@/core/pokemon/adapter/secondaries/InMemory/InMemoryPokemon.loader";
 import {Pokemon} from "@/core/pokemon/domain/entities/Pokemon";
-import {StubPokemonBuilder} from "./stubs/stubPokemon.builder";
+import {StubPokemonBuilder} from "../stubs/stubPokemon.builder";
 
 describe('Pokemon Handler fetches', () => {
 	let pikachu: Pokemon
